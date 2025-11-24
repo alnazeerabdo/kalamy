@@ -28,65 +28,105 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <div class="bg-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
     </div>
 
-    <div class="container glass-card">
-        <header>
-            <h1>محول الصوت إلى نص بالذكاء الاصطناعي</h1>
-            <p class="subtitle">حول كلامك إلى نص مكتوب بدقة عالية</p>
+    <div class="main-wrapper">
+        <div class="glass-container">
+            <header>
+                <div class="logo-area">
+                    <div class="logo-icon">🎙️</div>
+                    <h1>محول الصوت إلى نص <span class="highlight">AI</span></h1>
+                </div>
+                <p class="subtitle">حول كلامك إلى نص مكتوب بدقة فائقة</p>
 
-            <div class="privacy-note">
-                <span class="icon">🔒</span>
-                <p>ملاحظة: بصفتي مطور هذا التطبيق، لا أملك أي وصول إلى صوتك. تتم المعالجة بشكل آمن ومشفر بواسطة Google.
-                </p>
-            </div>
-        </header>
+                <div class="privacy-badge">
+                    <span class="lock-icon">🔒</span>
+                    <span>خصوصية تامة: لا نملك الوصول إلى صوتك</span>
+                </div>
+            </header>
 
-        <main>
-            <div class="api-section glass-panel">
-                <label for="apiKey">مفتاح API (اختياري - للسرعة القصوى)</label>
-                <input type="password" id="apiKey" placeholder="أدخل مفتاح Gemini API الخاص بك هنا...">
-                <p class="hint">اتركه فارغاً لاستخدام الخادم المجاني</p>
-            </div>
+            <main>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="apiKey" placeholder=" " autocomplete="off">
+                        <label for="apiKey">مفتاح API (اختياري)</label>
+                        <div class="input-icon">🔑</div>
+                    </div>
+                    <p class="hint">اتركه فارغاً للاستخدام المجاني</p>
+                </div>
 
-            <div class="controls">
-                <button id="startBtn" class="btn primary ripple">
-                    <span class="icon">🎙️</span>
-                    ابدأ التسجيل
-                </button>
-                <button id="stopBtn" class="btn danger ripple" disabled>
-                    <span class="icon">⏹️</span>
-                    توقف وتحويل
-                </button>
-            </div>
+                <div class="visualizer-container hidden" id="visualizer">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
 
-            <div id="status" class="status-indicator hidden">
-                <div class="pulse-ring"></div>
-                <span id="statusText">جاري التسجيل...</span>
-            </div>
+                <div class="controls-area">
+                    <button id="startBtn" class="action-btn record-btn">
+                        <div class="btn-content">
+                            <span class="icon">🎙️</span>
+                            <span>تسجيل</span>
+                        </div>
+                        <div class="btn-bg"></div>
+                    </button>
 
-            <div class="output-section glass-panel">
-                <label for="output">النص المستخرج:</label>
-                <textarea id="output" readonly placeholder="سيظهر النص هنا بعد انتهاء التحويل..."></textarea>
-            </div>
-        </main>
+                    <button id="stopBtn" class="action-btn stop-btn" disabled>
+                        <div class="btn-content">
+                            <span class="icon">⏹️</span>
+                            <span>تحويل</span>
+                        </div>
+                    </button>
+                </div>
 
-        <footer>
-            <p>يعمل بواسطة Google Gemini 2.0 Flash</p>
-        </footer>
+                <div id="status" class="status-message hidden">
+                    <span class="status-dot"></span>
+                    <span id="statusText">جاري الاستماع...</span>
+                </div>
+
+                <div class="output-wrapper">
+                    <div class="output-header">
+                        <label>النص المستخرج</label>
+                        <div class="actions">
+                            <span class="copy-hint">النتيجة ستظهر أدناه</span>
+                        </div>
+                    </div>
+                    <textarea id="output" readonly placeholder="ابدأ التسجيل وتحدث..."></textarea>
+                </div>
+            </main>
+
+            <footer>
+                <p>Powered by <span class="brand">Google Gemini 2.0 Flash</span></p>
+            </footer>
+        </div>
     </div>
 
+    <!-- Script to toggle visualizer visibility based on state -->
+    <script>
+        // Simple helper to toggle visualizer since we can't edit script.js logic
+        const startB = document.getElementById('startBtn');
+        const stopB = document.getElementById('stopBtn');
+        const vis = document.getElementById('visualizer');
+
+        startB.addEventListener('click', () => vis.classList.remove('hidden'));
+        stopB.addEventListener('click', () => vis.classList.add('hidden'));
+    </script>
     <script src="script.js"></script>
 </body>
 
