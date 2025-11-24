@@ -13,7 +13,7 @@ let isRecording = false;
 
 // Configuration
 // REPLACE THIS WITH YOUR DEPLOYED WORKER URL AFTER DEPLOYMENT
-const WORKER_URL = 'https://your-worker-name.your-subdomain.workers.dev';
+const WORKER_URL = 'https://kalamy.alnzyrbdalmnm90.workers.dev';
 
 // Event Listeners
 startBtn.addEventListener('click', startRecording);
