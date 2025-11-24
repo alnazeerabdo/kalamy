@@ -102,7 +102,7 @@ async function sendToGemini(base64Data, mimeType) {
                             data: base64Data
                         }
                     }, {
-                        text: "Transcribe this audio to Arabic text. Output only the transcription without any additional text."
+                        text: "Transcribe this audio. Detect the language automatically (e.g., Arabic or English) and transcribe it exactly as spoken. Output only the transcription without any additional text."
                     }]
                 }]
             };
