@@ -7,6 +7,8 @@ const statusText = document.getElementById('statusText');
 const outputArea = document.getElementById('output');
 const apiKeyInput = document.getElementById('apiKey');
 const visualizer = document.getElementById('visualizer');
+const copyBtn = document.getElementById('copyBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 // State variables
 let mediaRecorder;
@@ -19,6 +21,27 @@ const WORKER_URL = 'https://kalamy.alnzyrbdalmnm90.workers.dev';
 
 // Event Listeners
 toggleBtn.addEventListener('click', toggleRecording);
+copyBtn.addEventListener('click', copyText);
+clearBtn.addEventListener('click', clearText);
+
+function copyText() {
+    const text = outputArea.value;
+    if (text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalIcon = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<span>✅</span>';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalIcon;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
+    }
+}
+
+function clearText() {
+    outputArea.value = '';
+}
 
 function toggleRecording() {
     if (!isRecording) {

@@ -58,7 +58,48 @@
             </header>
 
             <main>
-                <div class="input-group">
+                <div class="visualizer-container hidden" id="visualizer">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="controls-area">
+                    <button id="toggleBtn" class="action-btn record-btn">
+                        <div class="btn-content">
+                            <span class="icon" id="btnIcon">🎙️</span>
+                            <span id="btnText">تسجيل</span>
+                        </div>
+                        <div class="btn-bg"></div>
+                    </button>
+                </div>
+
+                <div id="status" class="status-message hidden">
+                    <span class="status-dot"></span>
+                    <span id="statusText">جاري الاستماع...</span>
+                </div>
+
+                <div class="output-wrapper">
+                    <div class="output-header">
+                        <label>النص المستخرج</label>
+                        <div class="actions">
+                            <button id="copyBtn" class="icon-btn" title="نسخ النص">
+                                <span>📋</span>
+                            </button>
+                            <button id="clearBtn" class="icon-btn" title="مسح النص">
+                                <span>🗑️</span>
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="output" readonly placeholder="ابدأ التسجيل وتحدث..."></textarea>
+                </div>
+
+                <div class="input-group api-group">
                     <div class="input-wrapper">
                         <input type="password" id="apiKey" placeholder=" " autocomplete="off">
                         <label for="apiKey">مفتاح API (اختياري)</label>
@@ -66,127 +107,15 @@
                     </div>
                     <p class="hint">اتركه فارغاً للاستخدام المجاني</p>
                 </div>
+            </main>
 
-                <div class="visualizer-container hidden" id="visualizer">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <!DOCTYPE html>
-                    <html lang="ar" dir="rtl">
+            <footer>
+                <p>Powered by <span class="brand">Google Gemini 2.0 Flash</span></p>
+            </footer>
+        </div>
+    </div>
 
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>محول الصوت إلى نص | Arabic Voice to Text AI</title>
+    <script src="script.js"></script>
+</body>
 
-                        <!-- SEO Meta Tags -->
-                        <meta name="description"
-                            content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي. تدعم اللغة العربية بلهجات مختلفة. حول كلامك إلى نص مكتوب بسهولة.">
-                        <meta name="keywords"
-                            content="تحويل الصوت إلى نص, تحويل الكلام إلى نص, الكتابة بالصوت, تفريغ صوتي, ذكاء اصطناعي, مجاني, عربي, Arabic Voice to Text, Speech to Text Arabic, AI Transcription, Gemini AI, Voice Typing, Audio to Text">
-                        <meta name="author" content="Voice-to-Text Platform">
-                        <meta name="robots" content="index, follow">
-
-                        <!-- Open Graph / Facebook -->
-                        <meta property="og:type" content="website">
-                        <meta property="og:title" content="محول الصوت إلى نص | Arabic Voice to Text AI">
-                        <meta property="og:description"
-                            content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي.">
-
-                        <!-- Twitter -->
-                        <meta property="twitter:card" content="summary_large_image">
-                        <meta property="twitter:title" content="محول الصوت إلى نص | Arabic Voice to Text AI">
-                        <meta property="twitter:description"
-                            content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي.">
-
-                        <!-- Fonts -->
-                        <link rel="preconnect" href="https://fonts.googleapis.com">
-                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                        <link
-                            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
-                            rel="stylesheet">
-
-                        <!-- Styles -->
-                        <link rel="stylesheet" href="style.css">
-                    </head>
-
-                    <body>
-                        <div class="bg-animation">
-                            <div class="shape shape-1"></div>
-                            <div class="shape shape-2"></div>
-                            <div class="shape shape-3"></div>
-                        </div>
-
-                        <div class="main-wrapper">
-                            <div class="glass-container">
-                                <header>
-                                    <div class="logo-area">
-                                        <div class="logo-icon">🎙️</div>
-                                        <h1>محول الصوت إلى نص <span class="highlight">AI</span></h1>
-                                    </div>
-                                    <p class="subtitle">حول كلامك إلى نص مكتوب بدقة فائقة</p>
-
-                                    <div class="privacy-badge">
-                                        <span class="lock-icon">🔒</span>
-                                        <span>خصوصية تامة: لا نملك الوصول إلى صوتك</span>
-                                    </div>
-                                </header>
-
-                                <main>
-                                    <div class="input-group">
-                                        <div class="input-wrapper">
-                                            <input type="password" id="apiKey" placeholder=" " autocomplete="off">
-                                            <label for="apiKey">مفتاح API (اختياري)</label>
-                                            <div class="input-icon">🔑</div>
-                                        </div>
-                                        <p class="hint">اتركه فارغاً للاستخدام المجاني</p>
-                                    </div>
-
-                                    <div class="visualizer-container hidden" id="visualizer">
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                        <div class="bar"></div>
-                                    </div>
-
-                                    <div class="controls-area">
-                                        <button id="toggleBtn" class="action-btn record-btn">
-                                            <div class="btn-content">
-                                                <span class="icon" id="btnIcon">🎙️</span>
-                                                <span id="btnText">تسجيل</span>
-                                            </div>
-                                            <div class="btn-bg"></div>
-                                        </button>
-                                    </div>
-
-                                    <div id="status" class="status-message hidden">
-                                        <span class="status-dot"></span>
-                                        <span id="statusText">جاري الاستماع...</span>
-                                    </div>
-
-                                    <div class="output-wrapper">
-                                        <div class="output-header">
-                                            <label>النص المستخرج</label>
-                                            <div class="actions">
-                                                <span class="copy-hint">النتيجة ستظهر أدناه</span>
-                                            </div>
-                                        </div>
-                                        <textarea id="output" readonly placeholder="ابدأ التسجيل وتحدث..."></textarea>
-                                    </div>
-                                </main>
-
-                                <footer>
-                                    <p>Powered by <span class="brand">Google Gemini 2.0 Flash</span></p>
-                                </footer>
-                            </div>
-                        </div>
-
-                        <script src="script.js"></script>
-                    </body>
-
-                    </html>
+</html>
