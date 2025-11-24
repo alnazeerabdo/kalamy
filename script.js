@@ -1,10 +1,12 @@
 // DOM Elements
-const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
+const toggleBtn = document.getElementById('toggleBtn');
+const btnIcon = document.getElementById('btnIcon');
+const btnText = document.getElementById('btnText');
 const statusDiv = document.getElementById('status');
 const statusText = document.getElementById('statusText');
 const outputArea = document.getElementById('output');
 const apiKeyInput = document.getElementById('apiKey');
+const visualizer = document.getElementById('visualizer');
 
 // State variables
 let mediaRecorder;
@@ -16,8 +18,15 @@ let isRecording = false;
 const WORKER_URL = 'https://kalamy.alnzyrbdalmnm90.workers.dev';
 
 // Event Listeners
-startBtn.addEventListener('click', startRecording);
-stopBtn.addEventListener('click', stopRecording);
+toggleBtn.addEventListener('click', toggleRecording);
+
+function toggleRecording() {
+    if (!isRecording) {
+        startRecording();
+    } else {
+        stopRecording();
+    }
+}
 
 async function startRecording() {
     try {
@@ -52,14 +61,29 @@ function stopRecording() {
 }
 
 function updateUI(recording) {
-    startBtn.disabled = recording;
-    stopBtn.disabled = !recording;
-
     if (recording) {
+        // Change to Stop button
+        toggleBtn.classList.remove('record-btn');
+        toggleBtn.classList.add('stop-btn');
+        btnIcon.textContent = '⏹️';
+        btnText.textContent = 'إيقاف';
+
+        // Show visualizer and status
+        visualizer.classList.remove('hidden');
         statusDiv.classList.remove('hidden');
         statusText.textContent = 'جاري التسجيل...';
         outputArea.placeholder = 'جاري الاستماع...';
     } else {
+        // Change back to Record button
+        toggleBtn.classList.remove('stop-btn');
+        toggleBtn.classList.add('record-btn');
+        btnIcon.textContent = '🎙️';
+        btnText.textContent = 'تسجيل';
+
+        // Hide visualizer
+        visualizer.classList.add('hidden');
+
+        // Update status
         statusText.textContent = 'جاري المعالجة...';
     }
 }
@@ -102,7 +126,7 @@ async function sendToGemini(base64Data, mimeType) {
                             data: base64Data
                         }
                     }, {
-                        text: "Transcribe this audio. Detect the language automatically (e.g., Arabic or English) and transcribe it exactly as spoken. Output only the transcription without any additional text."
+                        text: "Transcribe this audio. Detect the language automatically (Arabic or English). If Arabic, output Arabic text. If English, output English text. Output ONLY the transcription."
                     }]
                 }]
             };
@@ -152,6 +176,9 @@ async function sendToGemini(base64Data, mimeType) {
         console.error('Error:', error);
         outputArea.value = `حدث خطأ: ${error.message}`;
     } finally {
-        statusDiv.classList.add('hidden');
+        // Only hide status if we are not recording (which we shouldn't be here, but good to be safe)
+        if (!isRecording) {
+            statusDiv.classList.add('hidden');
+        }
     }
 }
