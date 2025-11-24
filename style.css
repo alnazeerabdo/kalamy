@@ -422,19 +422,6 @@ textarea::placeholder {
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 2rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-background: var(--primary);
-border-radius: 10px;
-animation: sound 0.5s infinite ease-in-out alternate;
-}
-
-.bar:nth-child(1) {
-    height: 20px;
-    animation-delay: 0.1s;
 }
 
 .bar:nth-child(2) {
