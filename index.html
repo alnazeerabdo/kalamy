@@ -1,75 +1,93 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>محول الصوت إلى نص | Arabic Voice to Text AI</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي. تدعم اللغة العربية بلهجات مختلفة. حول كلامك إلى نص مكتوب بسهولة.">
-    <meta name="keywords" content="تحويل الصوت إلى نص, تحويل الكلام إلى نص, الكتابة بالصوت, تفريغ صوتي, ذكاء اصطناعي, مجاني, عربي, Arabic Voice to Text, Speech to Text Arabic, AI Transcription, Gemini AI, Voice Typing, Audio to Text">
+    <meta name="description"
+        content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي. تدعم اللغة العربية بلهجات مختلفة. حول كلامك إلى نص مكتوب بسهولة.">
+    <meta name="keywords"
+        content="تحويل الصوت إلى نص, تحويل الكلام إلى نص, الكتابة بالصوت, تفريغ صوتي, ذكاء اصطناعي, مجاني, عربي, Arabic Voice to Text, Speech to Text Arabic, AI Transcription, Gemini AI, Voice Typing, Audio to Text">
     <meta name="author" content="Voice-to-Text Platform">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="محول الصوت إلى نص | Arabic Voice to Text AI">
     <meta property="og:description" content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي.">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="محول الصوت إلى نص | Arabic Voice to Text AI">
-    <meta property="twitter:description" content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي.">
+    <meta property="twitter:description"
+        content="أداة مجانية لتحويل الصوت إلى نص بدقة عالية باستخدام الذكاء الاصطناعي.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container glass-card">
         <header>
             <h1>محول الصوت إلى نص بالذكاء الاصطناعي</h1>
             <p class="subtitle">حول كلامك إلى نص مكتوب بدقة عالية</p>
+
+            <div class="privacy-note">
+                <span class="icon">🔒</span>
+                <p>ملاحظة: بصفتي مطور هذا التطبيق، لا أملك أي وصول إلى صوتك. تتم المعالجة بشكل آمن ومشفر بواسطة Google.
+                </p>
+            </div>
         </header>
 
         <main>
-            <div class="api-section">
+            <div class="api-section glass-panel">
                 <label for="apiKey">مفتاح API (اختياري - للسرعة القصوى)</label>
                 <input type="password" id="apiKey" placeholder="أدخل مفتاح Gemini API الخاص بك هنا...">
                 <p class="hint">اتركه فارغاً لاستخدام الخادم المجاني</p>
             </div>
 
             <div class="controls">
-                <button id="startBtn" class="btn primary">
+                <button id="startBtn" class="btn primary ripple">
                     <span class="icon">🎙️</span>
                     ابدأ التسجيل
                 </button>
-                <button id="stopBtn" class="btn danger" disabled>
+                <button id="stopBtn" class="btn danger ripple" disabled>
                     <span class="icon">⏹️</span>
                     توقف وتحويل
                 </button>
             </div>
 
             <div id="status" class="status-indicator hidden">
-                <div class="pulse"></div>
+                <div class="pulse-ring"></div>
                 <span id="statusText">جاري التسجيل...</span>
             </div>
 
-            <div class="output-section">
+            <div class="output-section glass-panel">
                 <label for="output">النص المستخرج:</label>
                 <textarea id="output" readonly placeholder="سيظهر النص هنا بعد انتهاء التحويل..."></textarea>
             </div>
         </main>
 
         <footer>
-            <p>يعمل بواسطة Google Gemini AI</p>
+            <p>يعمل بواسطة Google Gemini 2.0 Flash</p>
         </footer>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
