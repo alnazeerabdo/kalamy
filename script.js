@@ -92,7 +92,7 @@ async function sendToGemini(base64Data, mimeType) {
 
         if (userKey) {
             // Scenario A: Direct to Google API
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${userKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${userKey}`;
 
             const payload = {
                 contents: [{
