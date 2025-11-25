@@ -86,10 +86,9 @@ function stopRecording() {
 function updateUI(recording) {
     if (recording) {
         // Change to Stop button
-        toggleBtn.classList.remove('record-btn');
-        toggleBtn.classList.add('stop-btn');
+        toggleBtn.classList.add('recording');
         btnIcon.textContent = '⏹️';
-        btnText.textContent = 'إيقاف';
+        btnText.textContent = 'إيقاف التسجيل';
 
         // Show visualizer and status
         visualizer.classList.remove('hidden');
@@ -98,10 +97,9 @@ function updateUI(recording) {
         outputArea.placeholder = 'جاري الاستماع...';
     } else {
         // Change back to Record button
-        toggleBtn.classList.remove('stop-btn');
-        toggleBtn.classList.add('record-btn');
+        toggleBtn.classList.remove('recording');
         btnIcon.textContent = '🎙️';
-        btnText.textContent = 'تسجيل';
+        btnText.textContent = 'ابدأ التسجيل';
 
         // Hide visualizer
         visualizer.classList.add('hidden');

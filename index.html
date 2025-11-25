@@ -36,69 +36,154 @@
 </head>
 
 <body>
-    <div class="bg-animation">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+    <!-- Animated Background -->
+    <div class="bg-gradient">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
     </div>
 
-    <div class="main-wrapper">
-        <div class="glass-container">
-            <header>
-                <div class="logo-area">
-                    <div class="logo-icon">🎙️</div>
-                    <h1>محول الصوت إلى نص <span class="highlight">AI</span></h1>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C10.9 2 10 2.9 10 4V12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12V4C14 2.9 13.1 2 12 2Z"
+                                fill="url(#gradient1)" />
+                            <path
+                                d="M19 10C18.4 10 18 10.4 18 11V12C18 15.3 15.3 18 12 18C8.7 18 6 15.3 6 12V11C6 10.4 5.6 10 5 10C4.4 10 4 10.4 4 11V12C4 16.2 7.2 19.6 11 19.9V22C11 22.6 11.4 23 12 23C12.6 23 13 22.6 13 22V19.9C16.8 19.6 20 16.2 20 12V11C20 10.4 19.6 10 19 10Z"
+                                fill="url(#gradient2)" />
+                            <defs>
+                                <linearGradient id="gradient1" x1="10" y1="2" x2="14" y2="14"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#A78BFA" />
+                                    <stop offset="1" stop-color="#EC4899" />
+                                </linearGradient>
+                                <linearGradient id="gradient2" x1="4" y1="10" x2="20" y2="23"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#8B5CF6" />
+                                    <stop offset="1" stop-color="#3B82F6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h1 class="main-title">
+                        محول الصوت إلى نص <span class="ai-badge">AI</span>
+                    </h1>
                 </div>
-                <p class="subtitle">حول كلامك إلى نص مكتوب بدقة فائقة</p>
+                <p class="subtitle">حول كلامك إلى نص مكتوب بدقة فائقة باستخدام الذكاء الاصطناعي</p>
 
                 <div class="privacy-badge">
-                    <span class="lock-icon">🔒</span>
-                    <span>خصوصية تامة: لا نملك الوصول إلى صوتك</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 5V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V5L12 2Z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>خصوصية تامة - لا نملك الوصول إلى صوتك</span>
                 </div>
-            </header>
+            </div>
+        </header>
 
-            <main>
-                <div class="visualizer-container hidden" id="visualizer">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-
-                <div class="controls-area">
-                    <button id="toggleBtn" class="action-btn record-btn">
-                        <div class="btn-content">
-                            <span class="icon" id="btnIcon">🎙️</span>
-                            <span id="btnText">تسجيل</span>
-                        </div>
-                        <div class="btn-bg"></div>
-                    </button>
-                </div>
-
-                <div id="status" class="status-message hidden">
-                    <span class="status-dot"></span>
-                    <span id="statusText">جاري الاستماع...</span>
-                </div>
-
-                <div class="output-wrapper">
-                    <div class="output-header">
-                        <label>النص المستخرج</label>
-                        <div class="actions">
-                            <button id="copyBtn" class="icon-btn" title="نسخ النص">
-                                <span>📋</span>
-                        </div>
-                        <p class="hint">اتركه فارغاً للاستخدام المجاني</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Recording Card -->
+            <div class="card recording-card">
+                <div class="card-header">
+                    <h2>التسجيل الصوتي</h2>
+                    <div id="status" class="status-badge hidden">
+                        <span class="status-dot"></span>
+                        <span id="statusText">جاري التسجيل...</span>
                     </div>
-            </main>
+                </div>
 
-            <footer>
-                <p>Powered by <span class="brand">Google Gemini 2.0 Flash</span></p>
-            </footer>
-        </div>
+                <!-- Visualizer -->
+                <div class="visualizer-wrapper">
+                    <div id="visualizer" class="visualizer hidden">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <div class="visualizer-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="url(#placeholderGrad)" stroke-width="2"
+                                opacity="0.3" />
+                            <path d="M12 8V16M8 12H16" stroke="url(#placeholderGrad)" stroke-width="2"
+                                stroke-linecap="round" />
+                            <defs>
+                                <linearGradient id="placeholderGrad" x1="4" y1="4" x2="20" y2="20">
+                                    <stop stop-color="#A78BFA" />
+                                    <stop offset="1" stop-color="#3B82F6" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Recording Button -->
+                <button id="toggleBtn" class="record-button">
+                    <span class="button-glow"></span>
+                    <span class="button-content">
+                        <span id="btnIcon" class="button-icon">🎙️</span>
+                        <span id="btnText" class="button-text">ابدأ التسجيل</span>
+                    </span>
+                </button>
+
+                <!-- API Key Input -->
+                <div class="api-input-group">
+                    <div class="input-container">
+                        <input type="password" id="apiKey" placeholder=" ">
+                        <label for="apiKey">مفتاح Gemini API (اختياري)</label>
+                        <div class="input-icon">🔑</div>
+                    </div>
+                    <p class="input-hint">اتركه فارغاً للاستخدام المجاني المحدود</p>
+                </div>
+            </div>
+
+            <!-- Output Card -->
+            <div class="card output-card">
+                <div class="card-header">
+                    <h2>النص المستخرج</h2>
+                    <div class="button-group">
+                        <button id="copyBtn" class="icon-button" title="نسخ النص">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M5 15H4C2.9 15 2 14.1 2 13V4C2 2.9 2.9 2 4 2H13C14.1 2 15 2.9 15 4V5"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                            <span>نسخ</span>
+                        </button>
+                        <button id="clearBtn" class="icon-button danger" title="مسح النص">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                <path
+                                    d="M8 6V4C8 3.4 8.4 3 9 3H15C15.6 3 16 3.4 16 4V6M19 6V20C19 20.6 18.6 21 18 21H6C5.4 21 5 20.6 5 20V6H19Z"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                            <span>مسح</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="textarea-wrapper">
+                    <textarea id="output" placeholder="سيظهر النص المستخرج هنا..."></textarea>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by <span class="brand-highlight">Google Gemini 2.0 Flash</span></p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
