@@ -149,7 +149,7 @@ async function sendToGemini(base64Data, mimeType) {
                             data: base64Data
                         }
                     }, {
-                        text: "Transcribe this audio. Detect the language automatically (Arabic or English). If Arabic, output Arabic text. If English, output English text. Output ONLY the transcription."
+                        text: "Transcribe this audio. Detect the language automatically (e.g., Arabic or English). \n\nRules:\n1. Remove all Arabic filler words (e.g., 'اه', 'ايه', 'يعني', 'امم').\n2. Write technical terms (e.g., React Native, iOS, Android, Photoshop) in English, even if spoken in Arabic context.\n3. Output ONLY the cleaned transcription text."
                     }]
                 }]
             };

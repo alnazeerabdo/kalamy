@@ -46,7 +46,7 @@ export default {
                             data: audio
                         }
                     }, {
-                        text: "Transcribe this audio. Detect the language automatically (e.g., Arabic or English) and transcribe it exactly as spoken. Output only the transcription without any additional text."
+                        text: "Transcribe this audio. Detect the language automatically (e.g., Arabic or English). \n\nRules:\n1. Remove all Arabic filler words (e.g., 'اه', 'ايه', 'يعني', 'امم').\n2. Write technical terms (e.g., React Native, iOS, Android, Photoshop) in English, even if spoken in Arabic context.\n3. Output ONLY the cleaned transcription text."
                     }]
                 }]
             };
